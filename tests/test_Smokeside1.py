@@ -9,10 +9,7 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
 
 class TestTestSmokesidepy():
   def setup_method(self, method):
@@ -67,6 +64,7 @@ class TestTestSmokesidepy():
     self.driver.find_element(By.ID, "password").click()
     self.driver.find_element(By.ID, "password").send_keys("scnijnejkjcsnckjsc")
     self.driver.find_element(By.CSS_SELECTOR, ".mysubmit:nth-child(4)").click()
+    self.driver.close()
     elements = self.driver.find_elements(By.CSS_SELECTOR, ".errorMessage")
     assert len(elements) > 0
   

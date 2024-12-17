@@ -9,13 +9,17 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 
 class TestTestSmokesidepy():
   def setup_method(self, method):
     options = Options()
     options.add_argument("--headless=new")
-    self.driver = webdriver.Chrome(options = options)
+    self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
     self.vars = {}
   
   def teardown_method(self, method):
